@@ -1,10 +1,22 @@
-function Home() {
-    return (
-        <>
-            <h1>Home</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam autem modi quidem voluptatum expedita, exercitationem recusandae fuga id magni adipisci.</p>
-        </>
-    )
+import Blog from "../components/Blog"
+
+/*
+    STATIC SITE GENERATION (Next.js will pre-render this page at build time)
+*/
+export async function getStaticProps() {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts")
+    let data = await response.json()
+    data = data.slice(0, 9)
+
+    return {
+        props: {
+            posts: data
+        }
+    }
 }
 
-export default Home
+function HomePage({ posts }) {
+    return <Blog posts={posts} />
+}
+
+export default HomePage

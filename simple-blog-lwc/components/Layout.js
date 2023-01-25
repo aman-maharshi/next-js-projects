@@ -1,14 +1,9 @@
-import Link from "next/link"
+import Header from "../components/Header"
 
 function Layout({ children }) {
     return (
         <>
-            <header>
-                <nav>
-                    <Link href="/">Home</Link>
-                    <Link href="/about">About</Link>
-                </nav>
-            </header>
+            <Header />
             <main>{children}</main>
         </>
     )
