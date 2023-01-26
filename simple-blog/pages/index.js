@@ -1,11 +1,17 @@
-export default function Home() {
-    return (
-        <div className="p-4">
-            <h2 className="text-2xl font-bold">Lorem, ipsum dolor.</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque,
-                at.
-            </p>
-        </div>
-    )
+import Home from "../components/Home"
+
+export async function getServerSideProps(context) {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts")
+    let data = await response.json()
+    data = data.slice(0, 12)
+
+    return {
+        props: { data: data }
+    }
 }
+
+function HomePage({ data }) {
+    return <Home posts={data} />
+}
+
+export default HomePage
