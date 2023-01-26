@@ -7,6 +7,7 @@ function Blog({ posts }) {
     return (
         <>
             <h1>Blog</h1>
+            <p>Static Site Generation (SSG)</p>
             <div className="posts-wrapper">
                 {posts.map(item => {
                     return (

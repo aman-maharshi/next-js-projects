@@ -1,13 +1,19 @@
-import Link from "next/link"
+import About from "../components/About"
 
-function About() {
-    return (
-        <>
-            <h1>About</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam autem modi quidem voluptatum expedita, exercitationem recusandae fuga id magni adipisci.</p>
-            <Link href="/">Back to Blog</Link>
-        </>
-    )
+export async function getStaticProps() {
+    const response = await fetch("https://api.github.com/users/aman-maharshi")
+    const data = await response.json()
+
+    return {
+        props: {
+            data: data
+        },
+        revalidate: 10
+    }
 }
 
-export default About
+function AboutPage({ data }) {
+    return <About data={data} />
+}
+
+export default AboutPage

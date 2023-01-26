@@ -1,31 +1,27 @@
 import Link from "next/link"
 
-export async function getServerSideProps() {
-    const response = await fetch("https://api.github.com/users/aman-maharshi")
-    const data = await response.json()
-
-    return {
-        props: {
-            data: data
-        }
-    }
-}
-
-function Contact({ data }) {
+function About({ data }) {
     // console.log(data)
 
     return (
         <>
             <Link href="/">⬅ Back to Blog</Link>
-            <h1>Contact</h1>
-            <p>Server-Side Rendering (SSR)</p>
+            <h1>About</h1>
+            <p>Incremental Static Regeneration (ISR) - SSG with Revalidate</p>
             <div className="about">
+                <img src={data.avatar_url} alt="" className="about-dp" />
+                <p className="about-name">{data.name}</p>
+                <a href={data.blog} target="_blank">
+                    {data.blog}
+                </a>
                 <div className="about-info">
                     <div>
+                        <div>Public Repos</div>
                         <div>Followers</div>
                         <div>Following</div>
                     </div>
                     <div>
+                        <div>{data.public_repos}</div>
                         <div>{data.followers}</div>
                         <div>{data.following}</div>
                     </div>
@@ -35,4 +31,4 @@ function Contact({ data }) {
     )
 }
 
-export default Contact
+export default About
