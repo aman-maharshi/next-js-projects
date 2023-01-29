@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Link from "next/link"
 
 export default function Home() {
     return (
@@ -7,11 +8,12 @@ export default function Home() {
                 <title>Login with Google</title>
             </Head>
             <div className="p-4">
-                <h2 className="font-bold text-2xl">Lorem, ipsum dolor.</h2>
+                <h2 className="font-bold text-2xl mb-4">Tennis Stats</h2>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Ut, nobis? Accusantium, quam beatae. Ex pariatur error ipsum
-                    repellat libero mollitia?
+                    <Link href="/join" className="underline">
+                        Login
+                    </Link>{" "}
+                    to view ATP ranking
                 </p>
             </div>
         </div>
