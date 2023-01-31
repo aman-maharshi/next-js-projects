@@ -4,7 +4,7 @@ function Layout({ children }) {
     return (
         <div className="md:w-9/12 mx-auto">
             <Nav />
-            {children}
+            <div className="md:pt-6">{children}</div>
         </div>
     )
 }

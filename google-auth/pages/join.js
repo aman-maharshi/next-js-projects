@@ -1,20 +1,19 @@
 import { useState } from "react"
 import Head from "next/head"
+import { useRouter } from "next/router"
 import { FcGoogle } from "react-icons/fc"
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import { auth } from "../utils/firebase"
 
 function JoinPage() {
-    const [userData, setUserData] = useState(null)
     const googleProvider = new GoogleAuthProvider()
+    const router = useRouter()
 
     async function handleGoogleLogin() {
         try {
             const result = await signInWithPopup(auth, googleProvider)
-            console.log(result)
-            setUserData(result.user)
-            // user.displayName
-            // user.photoURL
+            // console.log(result)
+            router.push("/")
         } catch (error) {
             console.log(error)
         }
